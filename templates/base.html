@@ -1,0 +1,49 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block meta %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" sizes="16x16" href="/static/media/site_images/favicon-16x16.png">
+    {% endblock%}
+ 
+    {% block additionMeta %}
+    {% endblock %}
+
+
+    {% block frameworkCSS %}
+   
+  
+    {% endblock %}
+    {% block additionCSS %}     
+
+    {% endblock %}
+
+    
+    <title>Data Entry</title>
+  </head>
+  <body>
+   
+
+   
+
+    {% block pageHeader %}
+    {% endblock %}
+
+   
+    
+    {% block content %}
+    {% endblock %}
+
+    
+ 
+    {% block frameworkJS %}
+
+    {% endblock %}
+   
+  </body>
+</html>
