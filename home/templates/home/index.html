@@ -7,7 +7,13 @@
 <a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook OAuth2</a>
 
 
-
+{% for product in products %}
+   <p> {{product.id}}</p>
+  <p>{{product.name}}</p>
+  {% if product.qr_code %}
+    <img src="{{product.qr_code.path}}" alt="">
+    {% endif %}
+{% endfor %}
 
 <script type="text/javascript">
         window.__be = window.__be || {};

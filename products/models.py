@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
-
+import uuid
 
 class Category(models.Model):
     class Meta:
@@ -37,6 +37,8 @@ class Product(models.Model):
     digital_download = models.BooleanField(default=False, null=True, blank=True)
     product_type = models.CharField(max_length=254, null=False, blank=True)
     number_of_pictures = models.IntegerField(default=0)
+    qr_status = models.BooleanField(default=False)
+    qr_retrieval_key = models.CharField(max_length=254, default=str(uuid.uuid4()), null=False, blank=False)
     qr_code = models.ImageField(upload_to="media/qr", null=True, blank=True)
 
     def __str__(self):
