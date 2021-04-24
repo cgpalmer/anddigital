@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ 
+<div class="container-fluid main-section-container margin-header-wrapper">
+    <div class="row">
+        <div class="col-12 extra-margin-top">
+            {% if messages %}
+                <div class="message-container">
+                    {% for message in messages %}
+                        <p class="mb-0"><i class="far fa-check-circle"></i> {{message}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+ <p> {{product.id}}</p>
+  <p>{{product.name}}</p>
+  {% if product.qr_code %}
+    <img src="{{product.qr_code}}" alt="" style="height: 50px; width:50px ">
+    {% endif %}
+
+
+
+{% endblock %}

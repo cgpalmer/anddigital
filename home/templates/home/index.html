@@ -8,10 +8,13 @@
 
 
 {% for product in products %}
+<div>
+    <a href="{% url 'product_detail' product.id %}">  <p>{{product.name}}</p></a>
    <p> {{product.id}}</p>
-  <p>{{product.name}}</p>
   {% if product.qr_code %}
     <img src="{{product.qr_code}}" alt="" style="height: 50px; width:50px ">
+</div>
+
     {% endif %}
 
     
