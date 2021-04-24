@@ -23,3 +23,19 @@ def profile(request):
     }
 
     return render(request, template, context)
+
+def customer_enquiry(request):
+    
+    template = 'home/index.html'
+    context = {        
+    }
+
+    return render(request, template, context)
+
+def delivery_enquiry(request):
+    
+    template = 'home/index.html'
+    context = {        
+    }
+
+    return render(request, template, context)

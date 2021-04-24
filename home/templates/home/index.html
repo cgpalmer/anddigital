@@ -47,6 +47,11 @@
             <p>Or you can message directly from the textbox below.
                Please leave a contact number or email so we can answer your query.
             </p>
+            <form method="POST" action="{% url 'customer_enquiry' %}">
+                        {% csrf_token%} 
+                <input type="text">
+                <button type="Submit">Request details</button>
+           </form>
         </div>
         <hr>
         <div>
@@ -57,8 +62,11 @@
             <p>If you do not have an account, please enter your order number below to request for details to be
                 sent to your email. 
             </p>
-           <input type="text">
-           <button type="Submit">Request details</button>
+               <form method="POST" action="{% url 'delivery_enquiry' %}">
+                        {% csrf_token%} 
+                <input type="text">
+                <button type="Submit">Request details</button>
+           </form>
         </div>
         <hr>
         <div>
