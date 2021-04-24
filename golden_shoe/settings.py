@@ -166,27 +166,13 @@ SOCIALACCOUNT_PROVIDERS = {
             'key': ''
         }
     },
-        'facebook': {
-        'METHOD': 'oauth2',
-        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
-        'SCOPE': ['email', 'public_profile'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate',},
-        'INIT_PARAMS': {'cookie': True},
-        'FIELDS': [
-            'id',
-            'first_name',
-            'last_name',
-            'middle_name',
-            'name',
-            'name_format',
-            'picture',
-            'short_name'
-        ],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v7.0',
-    }
+    'facebook': {
+        'APP': {
+            'client_id': '448303059593532',
+            'secret': 'a27ab041f02e57904a50bda82c2eed9c',
+            'key': ''
+        }
+    },
 }
 
 # Email configuration
