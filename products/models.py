@@ -39,7 +39,7 @@ class Product(models.Model):
     number_of_pictures = models.IntegerField(default=0)
     qr_status = models.BooleanField(default=False)
     qr_retrieval_key = models.CharField(max_length=254, default=str(uuid.uuid4()), null=False, blank=False)
-    qr_code = models.ImageField(upload_to="media/qr", null=True, blank=True)
+    qr_code = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.name

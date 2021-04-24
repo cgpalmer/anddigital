@@ -11,8 +11,10 @@
    <p> {{product.id}}</p>
   <p>{{product.name}}</p>
   {% if product.qr_code %}
-    <img src="{{product.qr_code.path}}" alt="">
+    <img src="{{product.qr_code}}" alt="" style="height: 50px; width:50px ">
     {% endif %}
+
+    
 {% endfor %}
 
 <script type="text/javascript">

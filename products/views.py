@@ -21,11 +21,12 @@ def add_product(request):
                 box_size=10,
                 border=4,
             )
-            qr.add_data('https://medium.com/@ngwaifoong92')
+            qr.add_data('https://cpalmer-andi-golden-shoe.herokuapp.com/')
             qr.make(fit=True)
             img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
-            img.save("new_qr.png")
-            product.qr_code = img
+            qr_path = f"static/qr/{product.id}{product.name}.png"
+            img.save(qr_path)
+            product.qr_code = f"/static/qr/{product.id}{product.name}.png"
             product.save()
             # insert new qr code here
             return redirect(reverse('home'))
