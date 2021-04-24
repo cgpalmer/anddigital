@@ -21,7 +21,7 @@ def add_product(request):
                 box_size=10,
                 border=4,
             )
-            qr.add_data('https://cpalmer-andi-golden-shoe.herokuapp.com/')
+            qr.add_data(f'https://cpalmer-andi-golden-shoe.herokuapp.com/products/{product.id}')
             qr.make(fit=True)
             img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
             qr_path = f"static/qr/{product.id}{product.name}.png"
