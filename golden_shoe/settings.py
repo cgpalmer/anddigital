@@ -215,15 +215,14 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static', 'serviceworker.js')
 PWA_APP_NAME = 'My App' 
 PWA_APP_DESCRIPTION = "My app description" 
 PWA_APP_THEME_COLOR = '#0A0302' 
 PWA_APP_BACKGROUND_COLOR = '#ffffff' 
 PWA_APP_DISPLAY = 'standalone' 
-PWA_APP_SCOPE = 'https://cpalmer-andi-golden-shoe.herokuapp.com/' 
+PWA_APP_SCOPE = '/' 
 PWA_APP_ORIENTATION = 'any' 
-PWA_APP_START_URL = '/' 
+PWA_APP_START_URL = 'https://cpalmer-andi-golden-shoe.herokuapp.com/' 
 PWA_APP_STATUS_BAR_COLOR = 'default' 
 PWA_APP_ICONS = [ { 'src': '/static/images/icon-160x160.png', 'sizes': '160x160' } ] 
 PWA_APP_ICONS_APPLE = [ { 'src': '/static/images/icon-160x160.png', 'sizes': '160x160' } ] 
