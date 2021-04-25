@@ -1,3 +1,6 @@
 Thank you for your email. 
 
+{{customer_query}}
+
 We will get back to you as soon as possible. 
+
