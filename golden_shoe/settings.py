@@ -215,6 +215,7 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static', 'serviceworker.js')
 PWA_APP_NAME = 'My App' 
 PWA_APP_DESCRIPTION = "My app description" 
 PWA_APP_THEME_COLOR = '#0A0302' 
