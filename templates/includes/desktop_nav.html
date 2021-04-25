@@ -1,0 +1,94 @@
+{% load profiles_extra %}
+<nav class="main-colour">
+   <div class="container-fluid pb-3">
+        <div class="row pt-3">
+            {% if request.user.is_authenticated %}          
+                <a href="" class="nav-link account-link col-sm text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user fa signed-in"></i><span> Account</span>
+                </a>
+                <div class="dropdown-menu desktop-nav-dropdown text-center drop-placement">
+                    <a class="dropdown-item account-dropdown" href="">My Profile</a>
+
+                    {% if request.user|has_group:"retail_assistant" %} 
+                        <a class="dropdown-item account-dropdown" href="">Admin</a>
+                    {% endif %}
+
+                    <a class="dropdown-item account-dropdown" href="{% url 'account_logout' %}">Logout</a>
+                </div>
+            {% else %}
+                <a href="" class="nav-link account-link col-sm text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user fa"></i><span> Account</span>
+                </a>
+
+                <div class="dropdown-menu desktop-nav-dropdown text-center drop-placement">
+                    <a class="dropdown-item account-dropdown" href="{% url 'account_login' %}">Login</a>
+                    <a href="{% url 'account_signup' %}" class="dropdown-item account-dropdown">Register</a>
+                </div>     
+            {% endif %} 
+            <a class="navbar-brand col-sm" href="{% url 'home' %}">Hidden Gems</a>                  
+            
+            <a class="nav-link col-sm" href="" id="basketLinkDesktop">
+                <i class="fas fa-shopping-basket item-added-transition"></i>
+                <span>£ {{ total|floatformat:2 }}</span>
+            </a>
+        </div>
+
+        <div id="desktopExtraNavWrapper">
+            <div class="row">
+                <div class="col-12">
+                    <hr class="nav-hr">
+                </div>
+                <div class="col-sm text-center desktop-nav-link">
+                    <a id="desktopNavAllProducts" href="">All products</a>
+                </div>   
+
+                <div class="col-sm text-center desktop-nav-link">
+                    <a id="desktopNavAllPhotographs" href="">Photographs</a>
+                </div>
+
+                <div id="desktopExtendedSearchBar" class="col-sm text-center">
+                    <form method="GET" action="" class="row input-group">
+                        <input class="form-control" name="q" type="search" placeholder="Search" aria-label="Search">
+                        <button class=" btn action-btn nav-search-button" type="submit"><i class="fas fa-search"></i></button>
+                    </form>                 
+                </div>
+
+                <div class="col-sm text-center desktop-nav-link">
+                    <a id="desktopNavAllFramesAndCanvas" class="col-sm text-center px-0 desktop-nav-link" href="">Accessories</a>
+                </div>
+
+                <div class="col-sm text-center desktop-nav-link">
+                    <a id="desktopNavAllSpecialOffers" class="col-sm text-center desktop-nav-link" href="">Special Offers</a>  
+                </div>
+
+            </div>
+            
+            <div id="desktopDropDownMenu" class="row">
+                <div class="col-sm text-center" aria-labelledby="allProducts">
+                    <a href="?sort=discount_price&direction=asc" class="cat-links">Price</a>
+                    <a href="?sort=rating&direction=desc" class="cat-links">Rating</a>                       
+                </div> 
+
+                <div class="col-sm text-center" aria-labelledby="photographsDropdown">
+                    <a href="?category=landscapes" class="cat-links">Landscapes</a>
+                    <a href="?category=insects" class="cat-links">Insects</a>
+                    <a href="?category=animals" class="cat-links">Animals</a>
+                    <a href="?category=flowers" class="cat-links">Flowers</a>
+                </div>
+
+                <div class="col-sm"></div>
+                <div class="col-sm text-center" aria-labelledby="containersDropdown">
+                    <a href="?category=canvas" class="cat-links">Canvases</a>
+                    <a href="?category=photo_frame" class="cat-links">Photo frames</a>
+                    <a href="?category=calendars" class="cat-links">Calendars</a>
+                </div>
+
+                <div class="col-sm text-center" >
+                    <a href="?special_offer=editors_pick" class="cat-links">Editor's Pick!</a>
+                    <a href="?special_offer=new_photos" class="cat-links">New photographs!</a>
+                    <a href="?special_offer=clearance" class="cat-links">Clearance</a>
+                </div>
+            </div> 
+        </div>
+    </div>
+</nav>
