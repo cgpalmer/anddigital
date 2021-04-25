@@ -1,17 +1,22 @@
 {
-    "name": "Christine Dodrill",
-    "short_name": "Christine",
-    "theme_color": "#ffcbe4",
-    "background_color": "#fa99ca",
+    "name": "Django PWA",
+    "short_name": "djangopwa",
+    "start_url": "/",
+    "scope": ".",
     "display": "standalone",
-    "scope": "/",
-    "start_url": "https://christine.website/",
-    "description": "Blog and Resume for Christine Dodrill",
-    "orientation": "any",
-    "icons": [
-        {
-            "src": "https://christine.website/static/img/avatar.png",
-            "sizes": "1024x1024"
-        }
-    ]
+    "background_color": "#FFF",
+    "theme_color": "#493174",
+    "description": "Test app for Django and PWA",
+    "dir": "ltr",
+    "lang": "en-US",
+    "orientation": "portrait-primary",
+    "icons": [{
+        "src": "/static/images/icon.png",
+        "type": "image/png",
+        "sizes": "96x96"
+    }, {
+        "src": "/static/images/icon.png",
+        "type": "image/png",
+        "sizes": "512x512"
+    }]
 }
