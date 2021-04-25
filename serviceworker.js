@@ -3,6 +3,7 @@ var staticCacheName = "django-pwa-v" + new Date().getTime();
 
 var filesToCache = [
     '/',
+    '/accounts/login/',
     '/static/css/base.css',
     '/static/css/colors.css',
     '/static/images/icons/icon-72x72.png',
