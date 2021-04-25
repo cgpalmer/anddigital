@@ -1,5 +1,6 @@
 {% load static %}
-
+{% load pwa %}
+{% progressive_web_app_meta %}
 
 <!doctype html>
 <html lang="en">
@@ -12,6 +13,7 @@
      <link rel="icon" type="image/png" sizes="16x16" href="/static/media/site_images/favicon-16x16.png">
       <link rel="stylesheet" href="{% static 'css/base.css' %}"> 
        <link rel="stylesheet" href="{% static 'css/colors.css' %}"> 
+       <link rel="manifest" href="manifest.js">
     {% endblock%}
  
     {% block additionMeta %}
@@ -51,27 +53,7 @@
     {% endblock %}
    {% include 'includes/footer.html' %}
     
- <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '448303059593532',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v10.0'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
     {% block frameworkJS %}
         <script src="https://kit.fontawesome.com/3129319209.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
