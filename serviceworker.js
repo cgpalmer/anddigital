@@ -1,9 +1,7 @@
 // Base Service Worker implementation.  To use your own Service Worker, set the PWA_SERVICE_WORKER_PATH variable in settings.py
-
 var staticCacheName = "django-pwa-v" + new Date().getTime();
 var filesToCache = [
-    '/offline/',
-    '.',
+    '/https://cpalmer-andi-golden-shoe.herokuapp.com/',
     '/static/css/base.css',
     '/static/css/colors.css',
     '/static/images/icons/icon-72x72.png',
