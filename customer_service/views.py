@@ -2,11 +2,11 @@ from django.shortcuts import render
 
 # Create your views here.
 def customer_enquiry(request):
-    if form.is_valid():
-        customer_enquiry = form.cleaned_data.get("enquiry")
-        email = form.cleaned_data.get("email")
-        tel = form.cleaned_data.get("tel")
-        send_confirmation_email(self, customer_enquiry, email, tel)
+ 
+    customer_enquiry = form.cleaned_data.get("enquiry")
+    email = form.cleaned_data.get("email")
+    tel = form.cleaned_data.get("tel")
+    send_confirmation_email(self, customer_enquiry, email, tel)
     template = 'home/index.html'
     context = {        
     }
