@@ -1,0 +1,7 @@
+Please see the query below.
+
+Email to reply to: {{cust_email}}
+Phone number: {{cust_tel}}
+Query:
+
+"{{enquiry}}"
