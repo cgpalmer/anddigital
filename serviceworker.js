@@ -51,14 +51,30 @@ self.addEventListener('activate', event => {
 });
 
 // Serve from Cache
-self.addEventListener("fetch", event => {
+// self.addEventListener("fetch", event => {
+//     event.respondWith(
+//         caches.match(event.request)
+//             .then(response => {
+//                 return response || fetch(event.request);
+//             })
+//             .catch(() => {
+//                 return caches.match('/offline/');
+//             })
+//     )
+// });
+
+self.addEventListener("fetch", function(event){
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                return response || fetch(event.request);
+        fetch(event.request)
+        .then(function(result){
+            return caches.open(staticCacheName)
+            .then(function(c){
+                c.put(event.request.url, result.clone())
+                return result;
             })
-            .catch(() => {
-                return caches.match('/offline/');
-            })
+        })
+        .catch(function(e){
+            return caches.match(event.request)
+        })
     )
 });
