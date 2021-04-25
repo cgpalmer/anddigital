@@ -1,7 +1,7 @@
 {
     "name": "Django PWA",
     "short_name": "djangopwa",
-    "start_url": "/",
+    "start_url": "https://cpalmer-andi-golden-shoe.herokuapp.com/",
     "scope": ".",
     "display": "standalone",
     "background_color": "#FFF",
