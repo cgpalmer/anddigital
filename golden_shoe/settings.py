@@ -215,10 +215,10 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
-PWA_APP_NAME = 'My App' 
-PWA_APP_DESCRIPTION = "My app description" 
+PWA_APP_NAME = 'Golden Shoe' 
+PWA_APP_DESCRIPTION = "Golden Shoe" 
 PWA_APP_THEME_COLOR = '#0A0302' 
-PWA_APP_BACKGROUND_COLOR = '#ffffff' 
+PWA_APP_BACKGROUND_COLOR = '#1A27E5' 
 PWA_APP_DISPLAY = 'standalone' 
 PWA_APP_SCOPE = '/' 
 PWA_APP_ORIENTATION = 'any' 
