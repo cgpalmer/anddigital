@@ -12,7 +12,7 @@
                     <span><i class="fas fa-user fa-lg "></i></span>
                 </button>  
             {% endif %}
-            <a class=" text-center" href="{% url 'home' %}"><img class="brand-logo" src="{% static 'images/edited_logo.png' %}" alt=""></a> 
+            <a class="col-6 text-center" href="{% url 'home' %}"><img class="brand-logo" src="{% static 'images/edited_logo.png' %}" alt=""></a> 
             <a class="nav-link col-4 px-0 text-center" href="" id="basketMobileNavLink">
                 <i class="fas fa-shopping-basket item-added-transition fa-lg"></i>
                 <span class="basket-total-span"> £ {{ total|floatformat:2 }}</span>

@@ -1,4 +1,6 @@
+{% load static %}
 {% load profiles_extra %}
+
 <nav class="main-colour">
    <div class="container-fluid pb-3">
         <div class="row pt-3">
@@ -25,7 +27,7 @@
                     <a href="{% url 'account_signup' %}" class="dropdown-item account-dropdown">Register</a>
                 </div>     
             {% endif %} 
-            <a class="navbar-brand col-sm" href="{% url 'home' %}">Golden Shoe</a>                  
+            <a class=" text-center" href="{% url 'home' %}"><img class="brand-logo" src="{% static 'images/edited_logo.png' %}" alt=""></a>                  
             
             <a class="nav-link col-sm" href="" id="basketLinkDesktop">
                 <i class="fas fa-shopping-basket item-added-transition"></i>
@@ -70,23 +72,25 @@
                 </div> 
 
                 <div class="col-sm text-center" aria-labelledby="photographsDropdown">
-                    <a href="?category=landscapes" class="cat-links">Landscapes</a>
-                    <a href="?category=insects" class="cat-links">Insects</a>
-                    <a href="?category=animals" class="cat-links">Animals</a>
-                    <a href="?category=flowers" class="cat-links">Flowers</a>
+                    <a href="?category=shoes" class="cat-links">Shoes</a>
+                    <a href="?category=trainers" class="cat-links">Trainers</a>
+                    <a href="?category=sports" class="cat-links">Sports</a>
+                    <a href="?category=boots" class="cat-links">Boots</a>
                 </div>
 
                 <div class="col-sm"></div>
                 <div class="col-sm text-center" aria-labelledby="containersDropdown">
-                    <a href="?category=canvas" class="cat-links">Canvases</a>
-                    <a href="?category=photo_frame" class="cat-links">Photo frames</a>
-                    <a href="?category=calendars" class="cat-links">Calendars</a>
+                    <a href="?category=shoes" class="cat-links">Shoes</a>
+                    <a href="?category=trainers" class="cat-links">Trainers</a>
+                    <a href="?category=sports" class="cat-links">Sports</a>
+                    <a href="?category=boots" class="cat-links">Boots</a>
                 </div>
 
                 <div class="col-sm text-center" >
-                    <a href="?special_offer=editors_pick" class="cat-links">Editor's Pick!</a>
-                    <a href="?special_offer=new_photos" class="cat-links">New photographs!</a>
-                    <a href="?special_offer=clearance" class="cat-links">Clearance</a>
+               <a href="?category=shoes" class="cat-links">0-1 Year</a>
+                    <a href="?category=trainers" class="cat-links">1-4 Years</a>
+                    <a href="?category=sports" class="cat-links">4-8 Years</a>
+                    <a href="?category=boots" class="cat-links">8-16 Years</a>
                 </div>
             </div> 
         </div>
