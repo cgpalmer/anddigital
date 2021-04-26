@@ -6,12 +6,12 @@ body, html {
 /* HTML settings */
 
 a {
-	color: white;
+	color: #f7ea5f;
 }
 
 a:hover {
 	text-decoration: none;
-	color: white;
+	color: #f7ea5f;
 }
 
 /* Re-used classes */
@@ -75,6 +75,12 @@ a:hover {
 }
 
 /* Nav */
+.brand-logo {
+    object-fit: contain;
+    height: 50px;
+    width: 100px;
+}
+
 
 .fa-user {
 	padding: 3px;
@@ -115,11 +121,7 @@ a:hover {
 	padding: 0.5rem 0;
 }
 
-.logo-title {
-    margin-top: 5px;
-    font-size: 1.25rem;
-    padding: 0;
-}
+
 
 /* Footer */
 
@@ -568,6 +570,12 @@ header .navbar-light .navbar-toggler-icon {
 .navbar-brand {
 	margin-right: 0;
 	font-size: 150%;
+}
+
+.brand-logo {
+    object-fit: cover;
+    height: 50px;
+    width: 100px;
 }
 
 .nav-link, .navbar-brand {

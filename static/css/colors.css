@@ -2,15 +2,15 @@
 .navbar, footer, .main-colour,.second-btn, .second-btn, 
 .second-btn:hover, .second-btn:active, .second-btn:focus, 
 .btn-danger:hover, .btn-danger:active, .btn-danger:focus, .special-offer-badge {
-    background-color: #978b21;
-}
-
-.action-btn,.accordion>.card>.card-header {
     background-color: #212D97;
 }
 
+.action-btn,.accordion>.card>.card-header {
+    background-color: #f7ea5f;
+}
+
 .action-btn:hover, .action-btn:active {
-    background-color: rgb(27, 37, 129);
+    background-color: #ccbf2f;
 }
 
 .form-control:focus {
@@ -23,8 +23,8 @@
 }
 
 .desktop-dropdown:hover, .desktop-dropdown:focus, .desktop-dropdown:focus-visible {
-    background-color: #7c7217;
-    color: white!important;    
+    background-color: #212D97;
+    color: #f7ea5f!important;    
 }
 
 /* Text colour */
@@ -34,19 +34,19 @@
 .action-btn, .action-btn:hover, .action-btn:active, .second-btn:hover, .second-btn:active, 
 .second-btn:focus, .btn-danger:hover, .btn-danger:active, .btn-danger:focus,
 .accordion-header, .accordion-header:hover {
-     color: white;
+     color: #f7ea5f;
 }
 
 p, .product-name, h4, h4 a, .form-control:focus, .email, .order-number {
-    color: black 
+    color: #f7ea5f 
 }
 
 .signed-in {
-    color: #212D97;
+    color: #f7ea5f;
 }
 
 .desktop-dropdown, .text-link, .text-link a, .form-group a, .order-number:hover, .account-dropdown{
-    color: #978b21;
+    color: #212D97;
 }
 
 .navbar-light .navbar-toggler-icon {
@@ -60,31 +60,31 @@ p, .product-name, h4, h4 a, .form-control:focus, .email, .order-number {
 }
 
 .action-btn {
-    border-color: #212D97;
+    border-color: #f7ea5f;
 }
 
 .action-btn:hover, .action-btn:active {
-    border-color: rgb(27, 37, 129);
+    border-color: #ccbf2f;
 }
 
 .second-btn:hover, .second-btn:active, .second-btn:focus, .btn-danger:hover, .btn-danger:active, 
 .btn-danger:focus, select, select:focus, input {
-    border-color: #7c7217;
+    border-color: #212D97;
 }
 
 .form-control:focus {
-    border-color: #978b21;
+    border-color: #212D97;
 }
 
 /* Hover Effects */
 
 .text-link:hover, .text-link:active, .text-link a:hover, .text-link a:active, .product-name:hover, 
 .product-name:active{
-    color: #7c7217;
+    color: #212D97;
 }
 
 .cat-links:hover, .cat-links:active, .dropdown-item:hover, .dropdown-item:active, .email:hover{
-    color: #978b21!important;
+    color: #212D97!important;
     background-color: white;
 }
 
@@ -94,7 +94,7 @@ p, .product-name, h4, h4 a, .form-control:focus, .email, .order-number {
 }
 
 .account-dropdown:active, .account-dropdown:focus, .dropdown-menu .account-dropdown:hover{
-    background-color: #978b21;
+    background-color: #212D97;
 }
 
 .social-icon:hover{
