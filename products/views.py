@@ -6,6 +6,77 @@ import qrcode  #https://betterprogramming.pub/how-to-generate-and-decode-qr-code
 from PIL import Image
 
 # Create your views here.
+def all_products(request):
+    # Returning the products page
+    products = Product.objects.all()
+    query = None
+    categories = None
+    special_offer = None
+    sort = None
+    direction = None
+
+    # Getting search queries from the URL
+    if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
+    if request.GET:
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            products = products.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+    if request.GET:
+        if 'special_offer' in request.GET:
+            special_offer = request.GET['special_offer'].split(',')
+            if special_offer == ['no_offer']:
+                products = products.exclude(special_offer__name__in=special_offer)
+            else:
+                products = products.filter(special_offer__name__in=special_offer)
+            special_offer = Special.objects.filter(name__in=special_offer)
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria.")
+                return redirect(reverse('products'))
+
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query) | Q(
+                friendly_name__icontains=query) | Q(sku__icontains=query)
+            products = products.filter(queries)
+
+    current_sorting = f'{sort}_{direction}'
+
+    context = {
+        'products': products,
+        'search_term': query,
+        'current_categories': categories,
+        'current_sorting': current_sorting,
+        'special_offer': special_offer
+    }
+    return render(request, 'products/products.html', context)
+
+
+
+
+
+
+
+
+
+
 def add_product(request):
     """ Add a product to the store """
     if request.method == 'POST':

@@ -99,13 +99,14 @@
                 </li>
 
                  <li class="nav-item dropdown">
-                    <a class="nav-link cat-links" href="#" id="allProducts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link cat-links" href="" id="allProducts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        All Products <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="dropdown-menu border-0 pl-3" aria-labelledby="allProducts">
                     <a href="?sort=discount_price&direction=asc" class="cat-links">Price</a>
                     <a href="?sort=rating&direction=desc" class="cat-links">Rating</a> 
-                    <a href="?sort=rating&direction=desc" class="cat-links">Style</a>                      
+                    <a href="?sort=rating&direction=desc" class="cat-links">Style</a>   
+                    <a href="{% url 'products' %}" class="cat-links">All</a>                      
                     </div>
                 </li>
               
