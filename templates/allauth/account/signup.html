@@ -1,21 +1,56 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
+{% load account socialaccount %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+<div class="container margin-header-wrapper main-section-container mb-3">
+    <div class="row mb-3">
+        <div class="col-12 text-center extra-margin-top">
+            <hr>
+            <h2 class="logo-font mb-3">{% trans "Sign Up" %}</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h5>Sign in with Social Media</h5>
+            {% get_providers as socialaccount_providers %}
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+            {% if socialaccount_providers %}
+            <ul class="socialaccount_providers">
+                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+            </ul>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+               
+
+        <div class="col-12 col-xl-8 offset-xl-2 text-center">
+                <hr>
+        <h5>Or fill in the form below.</h5>
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            
+            <button class="btn action-btn btn-lg signup-button rounded-0 col-12" type="submit">{% trans "Sign Up" %} &raquo;</button>
+            </form>
+        </div>
+    
+        <div class="col-12 col-xl-6 offset-xl-3 text-center">
+            <p>{% blocktrans %}Already have an account? Then please <a class="text-link" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+        </div>
+    </div>
+</div>
+    
+
 
 {% endblock %}

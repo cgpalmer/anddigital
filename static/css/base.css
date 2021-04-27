@@ -117,8 +117,7 @@ a:hover {
 /* Nav */
 
 .button-fix-css{
-    position: relative;
-    float: right;
+   
     bottom: 50px;
 
 }
