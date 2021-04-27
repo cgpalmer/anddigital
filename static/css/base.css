@@ -14,6 +14,46 @@ a:hover {
 	color: #f7ea5f;
 }
 
+.socialaccount_providers{
+    padding: 0;
+}
+
+.social_media_image_facebook{
+   
+    width: 200px;
+    height: 50px;
+    background-image: url("/static/images/facebook_login.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+}
+
+.social_media_image_google:hover{
+   
+    width: 200px;
+    height: 50px;
+    background-image: url("/static/images/btn_google_signin_dark_pressed_web@2x.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+}
+
+.social_media_image_google{
+   
+    width: 200px;
+    height: 50px;
+    background-image: url("/static/images/btn_google_signin_dark_normal_web@2x.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+}
+
+.social_login{
+    margin-bottom: 1rem;
+    text-align: center;
+ 
+}
+
 /* Re-used classes */
 
 #previousPurchaseHeader, #revealPreviousPurchase {

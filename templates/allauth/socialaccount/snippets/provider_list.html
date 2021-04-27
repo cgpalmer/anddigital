@@ -1,3 +1,4 @@
+{% load static %}
 {% load socialaccount %}
 
 {% get_providers as socialaccount_providers %}
@@ -13,8 +14,9 @@
 </li>
 {% endfor %}
 {% endif %}
-<li>
-  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
-     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">{{provider.name}}</a>
-</li>
+<div class="social_login mb4">
+    <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} second" 
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"> <div class="social_media_image_{{provider.id}}"></div> </a>
+
+</div>
 {% endfor %}
