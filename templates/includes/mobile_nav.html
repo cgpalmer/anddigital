@@ -109,8 +109,85 @@
                     <a href="{% url 'products' %}" class="cat-links">All</a>                      
                     </div>
                 </li>
+    
+        <!-- Button trigger modal -->
+
+
+    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+    Contact
+    </button>
+
               
             </ul>
         </div>            
     </div>
 </nav>
+
+
+   
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">We would love to hear from you!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <div>
+            <p>Telephone: 012828 299 844 <br> <small>This number is open from 9am to 5pm</small></p>
+            <p>Email: goldenshoe@gmail.com</p>
+        </div>
+        <hr>
+        <div>
+           
+            <p>Alternatively, you can message directly from the textbox below.
+               Please leave a contact number or email so we can answer your query.
+            </p>
+            <form method="POST" action="{% url 'customer_enquiry' %}">
+                        {% csrf_token%} 
+                <label for="enquiry">Enquiry</label>
+                <input type="text" name="enquiry">
+                <label for="email">Email</label>
+                <input name="email" type="email">
+                <label for="tel">Telephone</label>
+                <input name="tel" type="tel">
+                <button type="Submit">Request details</button>
+           </form>
+        </div>
+        <hr>
+        <div>
+            <p>
+            Delivery dates
+            </p>
+            <p>Please go to <a href="">"My orders"</a> </p>
+            <p>If you do not have an account, please enter your order number below to request for details to be
+                sent to your email. 
+            </p>
+               <form method="POST" action="{% url 'delivery_enquiry' %}">
+                        {% csrf_token%} 
+                <input type="text">
+                <button type="Submit">Request details</button>
+           </form>
+        </div>
+        <hr>
+        <div>
+           <p> Please read our Returns Policy and instructions here <a href="">here</a>. </p>
+            <p>To return all parcels to any store or post them to the following address.</p>  
+            
+           <p>Returns Dep
+            <p>Golden Shoe,</p>
+            <p>1 Sole Lane,</p>
+            <p>Laceville,</p>
+            <p>Meshchester</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
