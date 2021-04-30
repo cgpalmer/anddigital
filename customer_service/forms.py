@@ -4,6 +4,11 @@ from .models import Enquiry
 class EnquiryForm(forms.ModelForm):
 
     class Meta:
-        enquiry = forms.CharField(widget=forms.Textarea)
-        email = forms.EmailField()
-        tel = forms.CharField(required=False)
+        model = Enquiry
+        fields = '__all__'
+        widgets = {
+            'enquiry': forms.Textarea(attrs={'rows': 4}),
+        }
+
+class DeliveryEnquiryForm(forms.Form): 
+    delivery_enquiry = forms.CharField(max_length=50)

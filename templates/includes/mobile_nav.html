@@ -148,15 +148,10 @@
             </p>
             <form method="POST" action="{% url 'customer_enquiry' %}">
                         {% csrf_token%} 
-                <label for="enquiry">Enquiry</label>
-                <input type="textarea" name="enquiry">
-                <label for="email">Email</label>
-                <input name="email" type="email">
-                <label for="tel">Telephone</label>
-                <input name="tel" type="tel">
+                
+                {{enquiry|crispy}}
                 <button type="Submit">Request details</button>
                 
-                <!-- {{form|crispy}} -->
            </form>
         </div>
         <hr>
@@ -170,7 +165,7 @@
             </p>
                <form method="POST" action="{% url 'delivery_enquiry' %}">
                         {% csrf_token%} 
-                <input type="text">
+                    {{delivery_enquiry|crispy}}
                 <button type="Submit">Request details</button>
            </form>
         </div>
