@@ -4,7 +4,7 @@
 {% block content %}
  
 <div class="container-fluid main-section-container margin-header-wrapper">
-    <div class="row">
+    <div class="row d-block ">
         <div class="col-12 extra-margin-top">
             {% if messages %}
                 <div class="message-container">
@@ -20,7 +20,27 @@
   {% if product.qr_code %}
     <img src="{{product.qr_code}}" alt="" style="height: 50px; width:50px ">
     {% endif %}
+       <div >
 
+    <p id="stock_indicator" class="btn btn-primary">Click for online stock levels <i class="fas fa-arrow-right"></i> 
+        <span id="stock_indicator_value" class="hide">{{product.online_stock_count}}</span>
+    </p>
+    
+
+       </div>
+    <label for="store_select">Please select a store to see available stock per size.</label>
+   <select name="store_select" id="store_select">
+       <option value="" selected>Select a store</option>
+       {% for store in stores %}
+        <option value="{{store.store}}">{{store.store}}</option>
+       {% endfor %}
+   </select>
+       {% for size in sizes %}
+ 
+        <p class="{{size.store}} available_sizes hide">Size {{size.size}}: {{size.stock_levels}}</p>
+
+
+   {% endfor %}
 </div>
 </div>
 

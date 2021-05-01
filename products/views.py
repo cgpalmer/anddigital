@@ -118,8 +118,13 @@ def add_product(request):
 def product_detail(request, product_id):
     # Returning the details of a specific product.
     product = get_object_or_404(Product, pk=product_id)
+    sizes = Product_stock.objects.filter(product=product).order_by("size")
+    stores = Product_stock.objects.filter(product=product).distinct("store")
+    print(sizes)
     context = {
         'product': product,
+        'sizes': sizes,
+        'stores': stores
     }
     return render(request, 'products/product_detail.html', context)
 

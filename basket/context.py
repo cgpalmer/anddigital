@@ -12,7 +12,7 @@ def basket_contents(request):
     minified_items = []
     total = 0
     full_price_total = 0
-    products = Product.objects.filter(product_type="photo")
+    products = None
   
     product_count = 0
     delivery_total = 0

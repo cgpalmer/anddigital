@@ -204,3 +204,14 @@ $( document ).ready(function() {
         }
     });
 });
+
+$("#store_select").change(function() {
+    let value = $("#store_select").val();
+    $(".available_sizes").addClass('hide');
+    $(`.${value}`).removeClass('hide');
+});
+
+
+$('#stock_indicator').click(function(e){
+    $("#stock_indicator_value").toggleClass('hide');
+});
