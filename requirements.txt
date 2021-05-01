@@ -139,6 +139,7 @@ scp==0.13.3
 semver==2.13.0
 sqlparse==0.4.1
 sshtunnel==0.1.5
+stripe==2.56.0
 tabulate==0.8.9
 vsts==0.1.25
 vsts-cd-manager==1.0.2
