@@ -2,6 +2,9 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
+from django.db.models import CharField, Model
+from django_mysql.models import ListCharField
+from customer_service.models import Store
 import uuid
 
 class Category(models.Model):
@@ -30,11 +33,9 @@ class Product(models.Model):
     number_of_ratings = models.IntegerField(null=True, blank=True, default=0)
     rating_total = models.IntegerField(null=True, blank=True, default=0)
     # special_offer = models.ForeignKey('Special', null=True, blank=False, on_delete=models.SET_NULL)
-    image_url_mobile = models.URLField(max_length=1024, null=False, blank=True)
-    image_url_desktop = models.URLField(max_length=1024, null=False, blank=True)
-    image_mobile = models.ImageField(null=False, blank=True)
-    image_desktop = models.ImageField(max_length=1024, null=False, blank=True)
-    digital_download = models.BooleanField(default=False, null=True, blank=True)
+    images = ListCharField(base_field=CharField(max_length=10),max_length=(6 * 11), null=True, blank=True)
+    size = ListCharField(base_field=CharField(max_length=10),max_length=(12 * 11), null=True, blank=True)
+    stock_count = models.IntegerField(default=0)
     product_type = models.CharField(max_length=254, null=False, blank=True)
     number_of_pictures = models.IntegerField(default=0)
     qr_status = models.BooleanField(default=False)
@@ -52,3 +53,8 @@ class Special(models.Model):
 
     def __str__(self):
         return self.name
+
+class Product_stock(models.Model):
+    store = models.ForeignKey('customer_service.Store', null=True, blank=True, on_delete=models.SET_NULL)
+    product = models.ForeignKey('Product', null=True, blank=True, on_delete=models.SET_NULL)
+    stock_levels = models.IntegerField()
