@@ -33,12 +33,9 @@ class Product(models.Model):
     rating = models.IntegerField(default=0)
     number_of_ratings = models.IntegerField(null=True, blank=True, default=0)
     rating_total = models.IntegerField(null=True, blank=True, default=0)
-    # special_offer = models.ForeignKey('Special', null=True, blank=False, on_delete=models.SET_NULL)
     images = ListCharField(base_field=CharField(max_length=10),max_length=(6 * 11), null=True, blank=True)
-    size = ListCharField(base_field=CharField(max_length=10),max_length=(12 * 11), null=True, blank=True)
-    stock_count = models.IntegerField(default=0)
-    product_type = models.CharField(max_length=254, null=False, blank=True)
-    number_of_pictures = models.IntegerField(default=0)
+    online_stock_count = models.IntegerField(default=0)
+    store_stock_count = models.IntegerField(default=0)
     qr_status = models.BooleanField(default=False)
     qr_retrieval_key = models.CharField(max_length=254, default=str(uuid.uuid4()), null=False, blank=False)
     qr_code = models.CharField(max_length=254, null=True, blank=True)
@@ -60,3 +57,5 @@ class Product_stock(models.Model):
     product = models.ForeignKey('Product', null=True, blank=True, on_delete=models.SET_NULL)
     size = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(15)])
     stock_levels = models.IntegerField()
+
+  

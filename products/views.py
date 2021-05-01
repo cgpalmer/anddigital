@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
-from .models import Product
-from .forms import ProductForm
+from .models import Product, Product_stock
+from .forms import ProductForm, Product_stockForm
 import qrcode  #https://betterprogramming.pub/how-to-generate-and-decode-qr-codes-in-python-a933bce56fd0
 from PIL import Image
 
@@ -98,6 +98,8 @@ def add_product(request):
             qr_path = f"static/qr/{product.id}{product.name}.png"
             img.save(qr_path)
             product.qr_code = f"/static/qr/{product.id}{product.name}.png"
+
+
             product.save()
             # insert new qr code here
             return redirect(reverse('home'))
@@ -120,3 +122,28 @@ def product_detail(request, product_id):
         'product': product,
     }
     return render(request, 'products/product_detail.html', context)
+
+def add_product_stock(request):
+    
+    if request.method == 'POST':
+        form = Product_stockForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            form_product = form.cleaned_data.get("product")
+            form_stock_levels = form.cleaned_data.get("stock_levels")
+            product = get_object_or_404(Product, pk=form_product.id)
+            product.store_stock_count = product.store_stock_count + form_stock_levels
+            product.save()
+            return redirect(reverse('home'))
+        else:
+            messages.error(
+                request, 'Failed to add product. Please ensure the form is valid.')
+    else:
+        form = Product_stockForm()
+    template = 'products/add_product_stock.html'
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
+        
+            
