@@ -6,6 +6,7 @@ from django.db.models import CharField, Model
 from django_mysql.models import ListCharField
 from customer_service.models import Store
 import uuid
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Category(models.Model):
     class Meta:
@@ -57,4 +58,5 @@ class Special(models.Model):
 class Product_stock(models.Model):
     store = models.ForeignKey('customer_service.Store', null=True, blank=True, on_delete=models.SET_NULL)
     product = models.ForeignKey('Product', null=True, blank=True, on_delete=models.SET_NULL)
+    size = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(15)])
     stock_levels = models.IntegerField()
