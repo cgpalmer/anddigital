@@ -33,7 +33,7 @@ class Product(models.Model):
     rating = models.IntegerField(default=0)
     number_of_ratings = models.IntegerField(null=True, blank=True, default=0)
     rating_total = models.IntegerField(null=True, blank=True, default=0)
-    images = ListCharField(base_field=CharField(max_length=10),max_length=(6 * 11), null=True, blank=True)
+    images = ListCharField(base_field=CharField(max_length=100),max_length=(6 * 110), null=True, blank=True)
     online_stock_count = models.IntegerField(default=0)
     store_stock_count = models.IntegerField(default=0)
     qr_status = models.BooleanField(default=False)
