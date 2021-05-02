@@ -147,11 +147,15 @@ def add_product_stock(request):
             form_product = form.cleaned_data.get("product")
             form_stock_levels = form.cleaned_data.get("stock_levels")
             location = form.cleaned_data.get("store")
+            print(location)
+            print(type(location))
+            print(location.store_name)
+            print(type(location.store_name))
             product = get_object_or_404(Product, pk=form_product.id)
-            if location == "store":
-                product.store_stock_count = product.store_stock_count + form_stock_levels
+            if location.store_name == "Online":
+                product.online_stock_count = product.online_stock_count + form_stock_levels
             else:
-                product.online_stock_count = product.store_stock_count + form_stock_levels
+                product.store_stock_count = product.store_stock_count + form_stock_levels
             product.save()
             return redirect(reverse('home'))
         else:
