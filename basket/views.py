@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from products.models import Product
+from products.models import Product, Product_stock
+from customer_service.models import Store
 
 from django.contrib import messages
 
@@ -26,32 +27,45 @@ def add_to_basket(request, item_id):
         quantity = int(request.POST.get('quantity'))
         product = get_object_or_404(Product, pk=item_id)
         size = int(request.POST.get('size'))
-
-        if basket != {}:
-            current_basket_total = 0
-            for item in basket['items']:
-                current_basket_total = current_basket_total + 1
-
-            basket_item_id = current_basket_total + 1            
-            basket['items'].append({
-                'basket_item_id': basket_item_id,
-                'item_id': item_id,    
-                'quantity': quantity,
-                'size': size,
-                })
+        store = get_object_or_404(Store, store_name="Online")
+        stocks = Product_stock.objects.filter(product=product, store=store, size=size)
+        stocks_for_size = 0
+        for stock in stocks:
+            print(stock.stock_levels)
+            stocks_for_size = stocks_for_size + stock.stock_levels
+            
+            
+        if quantity > stocks_for_size:
+            messages.error(request, f"Sorry but there are not enough shoes for your order.")
+            redirect_url = request.POST.get('redirect_url')
+            return redirect(redirect_url)
         else:
-            basket['items'] = []
-            request.session['basket_item_id'] = 1
-            basket['items'].append({
-                'basket_item_id': 1,
-                'item_id': item_id,
-                'quantity': quantity,
-                'size': size,
-            })
 
-        redirect_url = request.POST.get('redirect_url')
-        request.session['basket'] = basket
-        messages.success(request, f"Successfully added '{product.friendly_name}' to your basket.")
+            if basket != {}:
+                current_basket_total = 0
+                for item in basket['items']:
+                    current_basket_total = current_basket_total + 1
+
+                basket_item_id = current_basket_total + 1            
+                basket['items'].append({
+                    'basket_item_id': basket_item_id,
+                    'item_id': item_id,    
+                    'quantity': quantity,
+                    'size': size,
+                    })
+            else:
+                basket['items'] = []
+                request.session['basket_item_id'] = 1
+                basket['items'].append({
+                    'basket_item_id': 1,
+                    'item_id': item_id,
+                    'quantity': quantity,
+                    'size': size,
+                })
+
+            redirect_url = request.POST.get('redirect_url')
+            request.session['basket'] = basket
+            messages.success(request, f"Successfully added '{product.friendly_name}' to your basket.")
     else:
         redirect_url = 'home/index.html'
     return redirect(redirect_url)
