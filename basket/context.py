@@ -29,11 +29,8 @@ def basket_contents(request):
             full_price_sub_total = product.price * item['quantity']
 
             # Check delivery method
-            if item['digital_download']:
-                digital_download = "on"
-            else:
-                digital_download = None
-                delivery_total += subtotal
+           
+            delivery_total += subtotal
 
             total += subtotal
             full_price_total += full_price_sub_total
@@ -42,21 +39,17 @@ def basket_contents(request):
                 'item': item,
                 'product': product,
                 'subtotal': subtotal,
-                'digital_download': digital_download,
+     
             })
 
             minified_items.append({
                 'product_id': product.id,
                 'quantity': item['quantity'],
                 'subtotal': subtotal,
-                'digital_download': digital_download,
+
             })
 
-            # Checking that containers have a linked product and giving a warning if not
-            list_of_linked_product_info = item['linked_products']
-            for product_info in list_of_linked_product_info:
-                if product_info == 'Not linked' and product.number_of_pictures > 0:
-                    are_all_items_linked = False
+         
 
     # Calculate if eligble for free delivery
     if delivery_total == 0 or total > settings.FREE_DELIVERY_AMOUNT:
@@ -77,11 +70,9 @@ def basket_contents(request):
         'FREE_DELIVERY_AMOUNT': settings.FREE_DELIVERY_AMOUNT,
         'grand_total': grand_total,
         'delivery_total': delivery_total,
-        'are_all_items_linked': are_all_items_linked,
+       
         'products': products,
-        
-        'multi_buy_message': multi_buy_message,
-        'money_saved': money_saved,
+   
         'minified_items': minified_items
     }
 

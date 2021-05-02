@@ -24,49 +24,19 @@ def add_to_basket(request, item_id):
 
         # Retrieving form data
         quantity = int(request.POST.get('quantity'))
-        digital_download = request.POST.get('digital_download')
-        linked_products = [['Not linked']]  # Default setting
         product = get_object_or_404(Product, pk=item_id)
 
         # Item id is passed through as parameter to identify the linked product.
-        processing_linked_products_images_for_basket_preview(request, item_id)
-        linked_product_images_list = processing_linked_products_images_for_basket_preview(request, item_id)
 
-        processing_linked_products_for_checkout_summary(request, item_id)
-        linked_products = processing_linked_products_for_checkout_summary(request, item_id)
-
-        checking_for_repeated_linked_images(request, item_id, linked_products)
-        repeats_found = checking_for_repeated_linked_images(request, item_id, linked_products)
 
         if basket != {}:
             for item in basket['items']:
-                basket_item_id = basket_item_id + 1
-
-            # This next function decides whether the product already exists in the basket.
-            matching_items = []
-            if linked_products[0] == "Not available":
-                for item in basket['items']:
-                    # If the ID is in and the the digi-download is on OR off and matches it goes through here.
-                    if item_id == item['item_id'] and digital_download == item['digital_download']:
-                        matching_items.append(item)
-            else:
-                for item in basket['items']:
-                    if item_id == item['item_id'] and linked_products == item['linked_products']:
-                        matching_items.append(item)
-
-            # This next section will either update an basket item quantity or append a new item.
-            if matching_items:
-                if matching_items[0]['item_id'] == item_id:
-                    matching_items[0]['quantity'] += quantity
-            else:
+                        
                 basket['items'].append({
                     'basket_item_id': basket_item_id,
                     'item_id': item_id,
-                    'digital_download': digital_download,
+                    
                     'quantity': quantity,
-                    'linked_products': linked_products,
-                    'linked_product_images_list': linked_product_images_list,
-                    'repeats_found': repeats_found
                 })
         else:
             basket['items'] = []
@@ -74,11 +44,8 @@ def add_to_basket(request, item_id):
             basket['items'].append({
                 'basket_item_id': 1,
                 'item_id': item_id,
-                'digital_download': digital_download,
+ 
                 'quantity': quantity,
-                'linked_products': linked_products,
-                'linked_product_images_list': linked_product_images_list,
-                'repeats_found': repeats_found
             })
 
         redirect_url = request.POST.get('redirect_url')
