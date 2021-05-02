@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from .models import Product, Product_stock
+from customer_service.models import Store
 from .forms import ProductForm, Product_stockForm
 import qrcode  #https://betterprogramming.pub/how-to-generate-and-decode-qr-codes-in-python-a933bce56fd0
 from PIL import Image
@@ -119,6 +120,8 @@ def product_detail(request, product_id):
     # Returning the details of a specific product.
     product = get_object_or_404(Product, pk=product_id)
     sizes = Product_stock.objects.filter(product=product).order_by("size")
+    store_search = get_object_or_404(Store, store_name="online")
+    available_sizes = Product_stock.objects.filter(store=store_search).distinct("size")
     stores = Product_stock.objects.filter(product=product).distinct("store")
     print(sizes)
     print(product.images[0])
@@ -126,6 +129,7 @@ def product_detail(request, product_id):
     context = {
         'product': product,
         'sizes': sizes,
+        'available_sizes': available_sizes,
         'stores': stores,
         'display_image': display_image
     }
@@ -139,8 +143,12 @@ def add_product_stock(request):
             form.save()
             form_product = form.cleaned_data.get("product")
             form_stock_levels = form.cleaned_data.get("stock_levels")
+            location = form.cleaned_data.get("store")
             product = get_object_or_404(Product, pk=form_product.id)
-            product.store_stock_count = product.store_stock_count + form_stock_levels
+            if location is "store":
+                product.store_stock_count = product.store_stock_count + form_stock_levels
+            else:
+                product.online_stock_count = product.store_stock_count + form_stock_levels
             product.save()
             return redirect(reverse('home'))
         else:

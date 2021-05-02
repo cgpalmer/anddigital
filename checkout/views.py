@@ -7,7 +7,6 @@ from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
-from checkout.models import Linked_Product
 from basket.context import basket_contents
 from basket.views import emptyingBasket
 import stripe
@@ -41,14 +40,10 @@ def cache_checkout_data(request):
 def condensing_basket(request):
     basket = request.session.get('basket', {})
     if basket != {}:
-        list_of_items_to_check = []
-        duplicates_found = []
-
-        # Looping through the basket to form a list of items to check.
+            # Looping through the basket to form a list of items to check.
         for item in basket['items']:
 
-            appending_item = [item['basket_item_id'], int(item['quantity']), [item['item_id'], item['digital_download'],
-                              item['linked_products']]]
+            appending_item = [item['basket_item_id'], int(item['quantity']), [item['item_id'], item['size'],]]
             list_of_items_to_check.append(appending_item)
 
         # Finding the initial duplications

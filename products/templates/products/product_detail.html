@@ -59,6 +59,12 @@
             <form method="POST" action="{% url 'add_to_basket' product.id %}">
                 {% csrf_token%} 
                 <div>
+                    <h4 class="my-3 product-detail-labels">Size</h4>
+                    <select name="size" id="">
+                        {% for size in available_sizes %}
+                            <option value="{{size.size}}">{{size.size}}</option>
+                        {% endfor %}
+                    </select>
                     <h4 class="my-3 product-detail-labels">Quantity</h4>
                     <div class="input-group mb-3 col-xl-8 offset-xl-2">
                        
@@ -79,12 +85,17 @@
                 <input type="hidden" name="redirect_url" value="{{request.path}}">          
             </form>
 
+        </div>
 
 
 
 
             
-            <hr>
+             
+                                  
+                <div class="card product-detail-card extra-margin-right col-12  first-pd-card col-md-6 order-md-1 col-lg-4 shadow p-3 mb-3 rounded">                    
+                    <div class="card-body product-detail-card-body  text-center">  
+               
             <h5 class="card-text">Stock Availability</h5>
                 <div >
                     <p id="stock_indicator" class="btn second-btn card-text">Click for online stock levels <i class="fas fa-arrow-right"></i> 
@@ -110,13 +121,8 @@
                     </div> 
                    
                 </div>
-             
-                                  
-                <div class="card product-detail-card extra-margin-right col-12  first-pd-card col-md-6 order-md-1 col-lg-4 shadow p-3 mb-3 rounded">                    
-                    <div class="card-body product-detail-card-body  text-center">  
-                        
-                          <h5>Continue shopping later?</h5>
-                            <p class="card-text">Scan the QR to save time!</p>
+                          <h5 class="text-center">Continue shopping later?</h5>
+                            <p class="card-text text-center">Scan the QR to save time!</p>
                       
 
                         {% if product.qr_code %}

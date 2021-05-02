@@ -24,8 +24,8 @@ def basket_contents(request):
         for item in basket['items']:
             product_count += 1
             product = get_object_or_404(Product, pk=item['item_id'])
-            subtotal = product.discount_price * item['quantity']
-
+            subtotal = product.price * item['quantity']
+            # size = item['size']
             full_price_sub_total = product.price * item['quantity']
 
             # Check delivery method
@@ -39,6 +39,7 @@ def basket_contents(request):
                 'item': item,
                 'product': product,
                 'subtotal': subtotal,
+                # 'size':size
      
             })
 

@@ -25,6 +25,7 @@ def add_to_basket(request, item_id):
         # Retrieving form data
         quantity = int(request.POST.get('quantity'))
         product = get_object_or_404(Product, pk=item_id)
+        size = int(request.POST.get('size'))
 
         if basket != {}:
             current_basket_total = 0
@@ -36,6 +37,7 @@ def add_to_basket(request, item_id):
                 'basket_item_id': basket_item_id,
                 'item_id': item_id,    
                 'quantity': quantity,
+                'size': size,
                 })
         else:
             basket['items'] = []
@@ -44,6 +46,7 @@ def add_to_basket(request, item_id):
                 'basket_item_id': 1,
                 'item_id': item_id,
                 'quantity': quantity,
+                'size': size,
             })
 
         redirect_url = 'home'
