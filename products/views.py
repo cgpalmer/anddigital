@@ -121,7 +121,7 @@ def product_detail(request, product_id):
     # Returning the details of a specific product.
     product = get_object_or_404(Product, pk=product_id)
     sizes = Product_stock.objects.filter(product=product).order_by("size")
-    store_search = get_object_or_404(Store, store_name="online")
+    store_search = get_object_or_404(Store, store_name="Online")
     available_sizes = Product_stock.objects.filter(store=store_search).distinct("size")
     stores = Product_stock.objects.filter(product=product).distinct("store")
     print(sizes)
@@ -165,4 +165,4 @@ def add_product_stock(request):
     }
     return render(request, template, context)
         
-            
+

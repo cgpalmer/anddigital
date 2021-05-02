@@ -49,9 +49,9 @@ def add_to_basket(request, item_id):
                 'size': size,
             })
 
-        redirect_url = 'home'
+        redirect_url = request.POST.get('redirect_url')
         request.session['basket'] = basket
-        # messages.success(request, f"Successfully added '{product.friendly_name}' to your basket.")
+        messages.success(request, f"Successfully added '{product.friendly_name}' to your basket.")
     else:
         redirect_url = 'home/index.html'
     return redirect(redirect_url)
