@@ -61,13 +61,9 @@
                 <div>
                     <h4 class="my-3 product-detail-labels">Quantity</h4>
                     <div class="input-group mb-3 col-xl-8 offset-xl-2">
-                        <button class="btn" data-item_id="{{ item.item_id }}" id="decreaseProductDetailQuantity">
-                            <span><i class="fas fa-minus fa-sm"></i></span>
-                        </button>  
+                       
                         <input class="form-control qty_input " type="number" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}" id="productDetailQty">
-                        <button class="btn" data-item_id="{{ item.item_id }}" id="increaseProductDetailQuantity">
-                            <span><i class="fas fa-plus fa-sm"></i></span>
-                        </button>  
+                     
                     </div>
                 </div>                     
                 <button id="addToBasket" class="btn col-12 btn-outline-black rounded-0 btn-lg action-btn mb-3" type="submit">
@@ -82,6 +78,12 @@
                 </a>
                 <input type="hidden" name="redirect_url" value="{{request.path}}">          
             </form>
+
+
+
+
+
+            
             <hr>
             <h5 class="card-text">Stock Availability</h5>
                 <div >

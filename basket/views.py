@@ -26,17 +26,16 @@ def add_to_basket(request, item_id):
         quantity = int(request.POST.get('quantity'))
         product = get_object_or_404(Product, pk=item_id)
 
-        # Item id is passed through as parameter to identify the linked product.
-
-
         if basket != {}:
+            current_basket_total = 0
             for item in basket['items']:
-                        
-                basket['items'].append({
-                    'basket_item_id': basket_item_id,
-                    'item_id': item_id,
-                    
-                    'quantity': quantity,
+                current_basket_total = current_basket_total + 1
+
+            basket_item_id = current_basket_total + 1            
+            basket['items'].append({
+                'basket_item_id': basket_item_id,
+                'item_id': item_id,    
+                'quantity': quantity,
                 })
         else:
             basket['items'] = []
@@ -44,104 +43,15 @@ def add_to_basket(request, item_id):
             basket['items'].append({
                 'basket_item_id': 1,
                 'item_id': item_id,
- 
                 'quantity': quantity,
             })
 
-        redirect_url = request.POST.get('redirect_url')
+        redirect_url = 'home'
         request.session['basket'] = basket
-        messages.success(request, f"Successfully added '{product.friendly_name}' to your basket.")
+        # messages.success(request, f"Successfully added '{product.friendly_name}' to your basket.")
     else:
         redirect_url = 'home/index.html'
     return redirect(redirect_url)
-
-
-def checking_for_repeated_linked_images(request, item_id, linked_products):
-    # checking to see if any of the linked products has repeated pictures to give the user a warning.
-    product = get_object_or_404(Product, pk=item_id)
-    repeats_found = 'None'
-    if product.number_of_pictures > 1:
-        for i in range(0, len(linked_products)):
-            for j in range(i+1, len(linked_products)):
-                if linked_products[i] == linked_products[j]:
-                    if linked_products[i] != "Not linked":
-                        repeats_found = 'There are repeated pictures in your product.'
-    return repeats_found
-
-
-def processing_linked_products_images_for_basket_preview(request, item_id):
-    product = get_object_or_404(Product, pk=item_id)
-    if product.number_of_pictures > 0:
-        # read each value from the form
-        number_of_products_to_link = product.number_of_pictures
-        linked_product_images_list = []
-
-        # Splitting the linked_products meta-data and appending them to the arrays above.
-        for i in range(number_of_products_to_link):
-            linked_product_details = request.POST.get('linked_product' + str(i))
-            split_linked_product_details = linked_product_details.split("|")
-
-            linked_product_image = split_linked_product_details[0]
-            linked_product_type = split_linked_product_details[2]
-
-            # This process the different paths needed to display the linked images of each product in basket.
-            if linked_product_images_list != []:
-                if linked_product_type == "upload":
-                    linked_product_image = "/media/" + linked_product_image
-                    linked_product_images_list.append(linked_product_image)
-                else:
-                    linked_product_images_list.append(linked_product_image)
-            else:
-                if linked_product_type == "upload":
-                    linked_product_image = "/media/" + linked_product_image
-                    linked_product_images_list.insert(0, linked_product_image)
-                else:
-                    linked_product_images_list.insert(0, linked_product_image)
-    else:
-        linked_product_images_list = ['Not available']
-    linked_product_images_list = linked_product_images_list
-    return linked_product_images_list
-
-
-def processing_linked_products_for_checkout_summary(request, item_id):
-    product = get_object_or_404(Product, pk=item_id)
-    linked_products = []
-
-    if product.number_of_pictures > 0:
-        # read each value from the form
-        number_of_products_to_link = product.number_of_pictures
-
-        # Splitting the linked_products meta-data and appending them to the arrays above.
-        for i in range(number_of_products_to_link):
-            linked_product_details = request.POST.get('linked_product' + str(i))
-            split_linked_product_details = linked_product_details.split("|")
-            linked_product_id = split_linked_product_details[1]
-            linked_product_type = split_linked_product_details[2]
-
-            if linked_product_type == 'upload':
-                linked_product_object = get_object_or_404(Image_upload, pk=linked_product_id)
-
-            # This stores the different SKU in an array for the order summary.
-            if linked_product_id == "No id":
-                if linked_products != []:
-                    linked_products.append('Not linked')
-                else:
-                    linked_products.insert(0, 'Not linked')
-            elif linked_product_type == 'upload':
-                if linked_products != []:
-                    linked_products.append(str(linked_product_object.sku))
-                else:
-                    linked_products.insert(0, str(linked_product_object.sku))
-            else:
-                linked_product = get_object_or_404(Product, pk=linked_product_id)
-                if linked_products != []:
-                    linked_products.append(linked_product.sku)
-                else:
-                    linked_products.insert(0, linked_product.sku)
-    else:
-        linked_products = ['Not available']
-    linked_products = linked_products
-    return linked_products
 
 
 def edit_basket(request):
