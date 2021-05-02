@@ -4,7 +4,8 @@ from django.contrib import messages
 from django.conf import settings
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from products.models import Product
+from products.models import Product, Product_stock
+from customer_service.models import Store
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from basket.context import basket_contents
@@ -126,6 +127,7 @@ def checkout(request):
                     return redirect(reverse('view_basket'))
 
             request.session['save_info'] = 'save-info' in request.POST
+            removing_stock(request)
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
@@ -227,3 +229,16 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+def removing_stock(request):
+    basket = request.session.get('basket', {})
+    store = get_object_or_404(Store, store_name="Online")
+    for item in basket['items']:
+        product = get_object_or_404(Product, pk=item['item_id'])
+        product_stock = get_object_or_404(Product_stock, product=item['item_id'], size=item['size'], store=store)
+        product_stock.stock_levels = product_stock.stock_levels - item['quantity']
+        product.online_stock_count = product.online_stock_count - item['quantity']
+        product.save()
+        product_stock.save()
+    return 
+    

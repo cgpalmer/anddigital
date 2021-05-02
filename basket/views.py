@@ -54,6 +54,7 @@ def add_to_basket(request, item_id):
                     'quantity': quantity,
                     'size': size,
                     'display_image': display_image,
+                    
                     })
             else:
                 basket['items'] = []
@@ -64,6 +65,7 @@ def add_to_basket(request, item_id):
                     'quantity': quantity,
                     'size': size,
                     'display_image': display_image,
+               
                 })
 
             redirect_url = request.POST.get('redirect_url')
