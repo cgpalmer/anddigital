@@ -1,4 +1,4 @@
-{% extends "base_with_stripe.html" %}
+{% extends "base.html" %}
 {% load static %}
 <!--  The majority of this code was initially copied from Boutique Ado - Code Institue
       I have altered the colour scheme and included some of my features, plus altered the 
@@ -36,33 +36,15 @@
                         <div class="row checkout-item-wrapper">
                             <div class="col-2  p-0 ">
                                 <a href="{% url 'product_detail' item.product.id %}">
-                                    <img class="w-100" src="{{ item.product.image_url_mobile}}" alt="{{ product.friendly_name }}">
+                                    <img class="w-100" src="{{item.item_image}}" alt="{{ product.friendly_name }}">
                                 </a>
                             </div>
                             <div class="col-7">
                                 <p class="my-0"><strong>{{ item.product.friendly_name }}</strong></p>
-                                <p class="my-0 small text-muted">Qty: {{ item.item.quantity }}</p>
-                                {% if item.item.digital_download %}
-                                    <p class="my-0 small text-muted">Delivery : Digital</p>
-                                {% else %}
-                                    <p class="my-0 small text-muted">Delivery : Delivery</p>
-                                {% endif %}
-                                <div class="row">
-                                    {% if item.product.product_type == "container" %}
-                                        <div class="col-12 p-0">
-                                            <p class="text-muted my-0 small">Linked Products</p>
-                                        </div>
-                                        {% for lp in item.item.linked_products%}
-                                            {% if lp != 'Not linked' %}
-                                                {% if lp != 'Not available' %}
-                                                    <div class="col-6 col-lg-3 linked-products-div">
-                                                        <small>{{lp|truncatechars:8}}</small>
-                                                    </div>
-                                                {% endif %}
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                </div> 
+                                <p class="my-0 small text-muted">Size: {{item.item.size}}</p>
+                                <p class="my-0 small text-muted">Qty: {{item.item.quantity }}</p>
+                               
+                           
                             </div>
                             <div class="col-3 text-right">
                                 <p class="my-0 small text-muted">£{{item.subtotal}}</p>
@@ -175,11 +157,5 @@
 {{ block.super}}
     {{stripe_public_key|json_script:"id_stripe_public_key"}}
     {{client_secret|json_script:"id_client_secret"}}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
-{% endblock %}
-{% block stripeJS %}
-{{ block.super}}
-    {{stripe_public_key|json_script:"id_stripe_public_key"}}
-    {{client_secret|json_script:"id_client_secret"}}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+    <script src="{% static 'js/stripe_elements.js' %}"></script>
 {% endblock %}

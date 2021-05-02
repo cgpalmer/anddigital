@@ -17,8 +17,6 @@ def basket_contents(request):
     product_count = 0
     delivery_total = 0
     basket = request.session.get('basket', {})
-    are_all_items_linked = True
-    multi_buy_message = ""
 
     if basket != {}:
         for item in basket['items']:
@@ -27,7 +25,8 @@ def basket_contents(request):
             subtotal = product.price * item['quantity']
             # size = item['size']
             full_price_sub_total = product.price * item['quantity']
-
+            item_image = product.images[0]
+            print(item_image)
             # Check delivery method
            
             delivery_total += subtotal
@@ -37,6 +36,7 @@ def basket_contents(request):
 
             basket_items.append({
                 'item': item,
+                'item_image': item_image,
                 'product': product,
                 'subtotal': subtotal,
                 # 'size':size
@@ -47,6 +47,7 @@ def basket_contents(request):
                 'product_id': product.id,
                 'quantity': item['quantity'],
                 'subtotal': subtotal,
+                # 'size':size
 
             })
 

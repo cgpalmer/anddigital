@@ -107,11 +107,6 @@ def checkout(request):
 
             # This checks the delivery method.
             for item in basket['items']:
-                if item['digital_download'] == 'on':
-                    digital_download = True
-                else:
-                    digital_download = False
-
                 try:
                     product = get_object_or_404(Product, pk=item['item_id'])
 
@@ -119,7 +114,7 @@ def checkout(request):
                         order=order,
                         product=product,
                         quantity=item["quantity"],
-                        digital_download=digital_download,
+                        
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
@@ -221,22 +216,14 @@ def checkout_success(request, order_number):
             product = get_object_or_404(Product, pk=item['item_id'])
             sku = product.sku
             name = product.friendly_name
-            if item['digital_download']:
-                user = request.user
-                number_of_times_downloaded = 0
-                ContentReadyToDownload.objects.create(user=user, sku=sku, name=name, product=product,
-                                                      number_of_times_downloaded=number_of_times_downloaded)
-            for link in item['linked_products']:
-                Linked_Product.objects.create(order_id=order, linked_product=link, product=product)
+            
 
     emptyingBasket(request)
 
-    linked_product = Linked_Product.objects.filter(order_id=order.id).exclude(linked_product='Not linked').exclude(
-                     linked_product='Not available')
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
-        'linked_product': linked_product
+      
     }
 
     return render(request, template, context)
