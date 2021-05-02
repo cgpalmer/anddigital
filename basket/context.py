@@ -23,7 +23,7 @@ def basket_contents(request):
             product_count += 1
             product = get_object_or_404(Product, pk=item['item_id'])
             subtotal = product.price * item['quantity']
-            # size = item['size']
+            size = item['size']
             full_price_sub_total = product.price * item['quantity']
             item_image = product.images[0]
             print(item_image)
@@ -39,7 +39,7 @@ def basket_contents(request):
                 'item_image': item_image,
                 'product': product,
                 'subtotal': subtotal,
-                # 'size':size
+                'size':size
      
             })
 
@@ -47,7 +47,7 @@ def basket_contents(request):
                 'product_id': product.id,
                 'quantity': item['quantity'],
                 'subtotal': subtotal,
-                # 'size':size
+                'size':size
 
             })
 

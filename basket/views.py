@@ -26,6 +26,7 @@ def add_to_basket(request, item_id):
         # Retrieving form data
         quantity = int(request.POST.get('quantity'))
         product = get_object_or_404(Product, pk=item_id)
+        display_image = product.images[0]
         size = int(request.POST.get('size'))
         store = get_object_or_404(Store, store_name="Online")
         stocks = Product_stock.objects.filter(product=product, store=store, size=size)
@@ -52,6 +53,7 @@ def add_to_basket(request, item_id):
                     'item_id': item_id,    
                     'quantity': quantity,
                     'size': size,
+                    'display_image': display_image,
                     })
             else:
                 basket['items'] = []
@@ -61,6 +63,7 @@ def add_to_basket(request, item_id):
                     'item_id': item_id,
                     'quantity': quantity,
                     'size': size,
+                    'display_image': display_image,
                 })
 
             redirect_url = request.POST.get('redirect_url')
