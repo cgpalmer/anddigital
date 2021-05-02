@@ -103,6 +103,7 @@ def add_product(request):
 
             product.save()
             # insert new qr code here
+
             return redirect(reverse('home'))
         else:
             messages.error(
@@ -135,6 +136,8 @@ def product_detail(request, product_id):
     }
     return render(request, 'products/product_detail.html', context)
 
+
+
 def add_product_stock(request):
     
     if request.method == 'POST':
@@ -145,7 +148,7 @@ def add_product_stock(request):
             form_stock_levels = form.cleaned_data.get("stock_levels")
             location = form.cleaned_data.get("store")
             product = get_object_or_404(Product, pk=form_product.id)
-            if location is "store":
+            if location == "store":
                 product.store_stock_count = product.store_stock_count + form_stock_levels
             else:
                 product.online_stock_count = product.store_stock_count + form_stock_levels
