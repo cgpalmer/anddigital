@@ -31,10 +31,14 @@
 
 .navbar, .navbar-light .navbar-brand, .navbar-light .navbar-toggler, footer p, footer, .dropdown-item, 
 .footerHeader, .social-link, .navbar-light .navbar-nav .nav-link, .second-btn, .second-btn, 
-.action-btn, .action-btn:hover, .action-btn:active, .second-btn:hover, .second-btn:active, 
+.second-btn:hover, .second-btn:active, 
 .second-btn:focus, .btn-danger:hover, .btn-danger:active, .btn-danger:focus,
 .accordion-header, .accordion-header:hover {
      color: #f7ea5f;
+}
+
+.action-btn, .action-btn:hover, .action-btn:active {
+    color: #212D97;
 }
 
 p, .product-name, h4, h4 a, .form-control:focus, .email, .order-number {
@@ -102,11 +106,11 @@ p, .product-name, h4, h4 a, .form-control:focus, .email, .order-number {
 }
 
 .action-btn:hover, .action-btn:active {
-    box-shadow: 0 0 0 0.2rem rgb(27, 37, 129, 0.5);
+    box-shadow: 0 0 0 0.2rem  rgba(243, 213, 46, 0.5);
 }
 
 .second-btn:hover, .second-btn:active, .second-btn:focus, .btn-danger:hover, .btn-danger:active, .btn-danger:focus, .form-control:focus{
-    box-shadow: 0 0 0 0.2rem rgba(124,114,23, 0.5);
+    box-shadow: 0 0 0 0.2rem rgb(27, 37, 129, 0.5);
 }
 
 .form-control:focus {

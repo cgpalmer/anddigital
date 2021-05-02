@@ -48,6 +48,12 @@ a:hover {
     margin: auto;
 }
 
+.pd-qr-code{
+    width: 100%;
+}
+
+
+
 .social_login{
     margin-bottom: 1rem;
     text-align: center;
@@ -228,8 +234,18 @@ footer {
 }
 
 .product-image {
-	width: 100%;
-	object-fit: cover;
+    width: 100%;
+    object-fit: contain;
+    display: inline;
+}
+
+
+
+
+.product-image-selection {
+    height: 75px;
+    display: inline;
+    cursor: pointer;
 }
 
 .product-name {

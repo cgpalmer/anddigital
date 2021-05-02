@@ -215,3 +215,12 @@ $("#store_select").change(function() {
 $('#stock_indicator').click(function(e){
     $("#stock_indicator_value").toggleClass('hide');
 });
+
+
+$('.p-image-select').click(function(e){
+    let img_src = $(this).attr('src');
+    console.log(img_src);
+
+    $("#p-display-image").attr('src', img_src);
+    $("#display_image_href").attr('href', img_src);
+});

@@ -121,10 +121,13 @@ def product_detail(request, product_id):
     sizes = Product_stock.objects.filter(product=product).order_by("size")
     stores = Product_stock.objects.filter(product=product).distinct("store")
     print(sizes)
+    print(product.images[0])
+    display_image = (product.images[0])
     context = {
         'product': product,
         'sizes': sizes,
-        'stores': stores
+        'stores': stores,
+        'display_image': display_image
     }
     return render(request, 'products/product_detail.html', context)
 
