@@ -100,9 +100,14 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            current_basket = basket_contents(request)
+            print(order_form)
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
+            order.grand_total = current_basket['grand_total']
+            order.order_total = current_basket['total']
+            order.deliver_total = current_basket['delivery_total']
             order.original_basket = json.dumps(basket['items'])
             order.save()
 

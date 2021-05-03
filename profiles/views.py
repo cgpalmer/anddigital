@@ -11,6 +11,7 @@ import datetime
 
 
 
+@login_required
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -22,11 +23,16 @@ def profile(request):
             messages.success(request, 'Profile updated successfully')
 
     form = UserProfileForm(instance=profile)
+    orders = profile.orders.all()
+      
+
     template = 'profiles/profiles.html'
     context = {
-    
+        'current_user': profile,
         'form': form,
-        
+        'orders': orders,
+        'on_profile_page': True,
+    
     }
 
     return render(request, template, context)
@@ -43,7 +49,7 @@ def order_history(request, order_number):
     context = {
         'order': order,
         'from_profile': True,
-        'linked_product': linked_product
+    
     }
 
     return render(request, template, context)

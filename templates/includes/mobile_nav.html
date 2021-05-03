@@ -113,7 +113,7 @@
         <!-- Button trigger modal -->
 
 
-    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn action-btn " data-toggle="modal" data-target="#exampleModal">
     Contact
     </button>
 
@@ -136,11 +136,39 @@
         </button>
       </div>
       <div class="modal-body text-center">
+          <div>
+            <h5 id="rp-header">Returns Policy <i class="fas fa-chevron-down"></i></h5>
+              <div class="rp_advise_wrapper hide">
+           <p> Please read our Returns Policy and instructions. </p>
+               <a class="btn second-btn mb-3" href="">Returns Policy</a>.
+            <p>To return all parcels to any store or post them to the following address.</p>  
+            
+           <p>Returns Dep
+            <p>Golden Shoe,</p>
+            <p>1 Sole Lane,</p>
+            <p>Laceville,</p>
+            <p>Meshchester</p>
+        </div>
+        </div>
+        <hr>
+         <div>
+            <h5 id="dd_header">
+            Delivery dates <i class="fas fa-chevron-down"></i>
+            </h5>
+            <div class="delivery_advise_wrapper hide">
+            <p>All deliveries are between 3-5 working days. See the order date, please visit:  </p>
+                 <a class="btn second-btn mb-3" href="{% url 'profile' %}">"My orders"</a>
+            <p>If you do not have an account, then please call us or fill out the form above. 
+            </p>
+          </div>
+        </div>
+          <hr>
         <div>
             <p>Telephone: 012828 299 844 <br> <small>This number is open from 9am to 5pm</small></p>
             <p>Email: goldenshoe@gmail.com</p>
         </div>
         <hr>
+       
         <div>
            
             <p>Alternatively, you can message directly from the textbox below.
@@ -150,39 +178,15 @@
                         {% csrf_token%} 
                 
                 {{enquiry|crispy}}
-                <button type="Submit">Request details</button>
+                <button class="btn second-btn" type="Submit">Request details</button>
                 
            </form>
         </div>
-        <hr>
-        <div>
-            <p>
-            Delivery dates
-            </p>
-            <p>Please go to <a href="">"My orders"</a> </p>
-            <p>If you do not have an account, please enter your order number below to request for details to be
-                sent to your email. 
-            </p>
-               <form method="POST" action="{% url 'delivery_enquiry' %}">
-                        {% csrf_token%} 
-                    {{delivery_enquiry|crispy}}
-                <button type="Submit">Request details</button>
-           </form>
-        </div>
-        <hr>
-        <div>
-           <p> Please read our Returns Policy and instructions here <a href="">here</a>. </p>
-            <p>To return all parcels to any store or post them to the following address.</p>  
-            
-           <p>Returns Dep
-            <p>Golden Shoe,</p>
-            <p>1 Sole Lane,</p>
-            <p>Laceville,</p>
-            <p>Meshchester</p>
-        </div>
+      
+      
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn second-btn" data-dismiss="modal">Close</button>
         
       </div>
     </div>

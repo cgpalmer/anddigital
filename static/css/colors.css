@@ -37,11 +37,11 @@
      color: #f7ea5f;
 }
 
-.action-btn, .action-btn:hover, .action-btn:active {
+.action-btn, .action-btn:hover, .action-btn:active, .modal-link {
     color: #212D97;
 }
 
-p, .product-name, h4, h4 a, .form-control:focus, .email, .order-number {
+p, .product-name, h4, h4 a, .form-control:focus, .email, .order-number  {
     color: black;
 }
 

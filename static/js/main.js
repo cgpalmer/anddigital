@@ -224,3 +224,12 @@ $('.p-image-select').click(function(e){
     $("#p-display-image").attr('src', img_src);
     $("#display_image_href").attr('href', img_src);
 });
+
+
+$('#dd_header').click(function(e){
+    $('.delivery_advise_wrapper').toggleClass('hide');
+});
+
+$('#rp-header').click(function(e){
+    $('.rp_advise_wrapper').toggleClass('hide');
+});
