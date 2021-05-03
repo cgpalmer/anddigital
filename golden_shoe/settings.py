@@ -242,7 +242,7 @@ PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = 'default' 
 PWA_APP_ICONS = [ { 'src': '/static/images/edited_logo.png', 'sizes': '160x160' } ] 
 PWA_APP_ICONS_APPLE = [ { 'src': '/static/images/edited_icon.png', 'sizes': '160x160' } ] 
-PWA_APP_SPLASH_SCREEN = [ { 'src': '/static/images/edited_icon.png', 'sizes': '200x200', 'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)' } ] 
+PWA_APP_SPLASH_SCREEN = [ { 'src': '/static/images/edited_icon_512x512.png', 'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)' } ] 
 PWA_APP_DIR = 'ltr' 
 PWA_APP_LANG = 'en-US'
 
