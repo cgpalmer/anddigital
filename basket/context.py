@@ -39,7 +39,8 @@ def basket_contents(request):
                 'item_image': item_image,
                 'product': product,
                 'subtotal': subtotal,
-                'size':size
+                'size':size,
+                'total': total
      
             })
 
@@ -47,6 +48,7 @@ def basket_contents(request):
                 'product_id': product.id,
                 'quantity': item['quantity'],
                 'subtotal': subtotal,
+                'total': total,
                 'size':size
 
             })

@@ -212,12 +212,7 @@ def checkout_success(request, order_number):
         email will be sent to {order.email}.')
 
     # This is where orders are stored for digital downloads.
-    basket = request.session.get('basket', {})
-    if basket != {}:
-        for item in basket['items']:
-            product = get_object_or_404(Product, pk=item['item_id'])
-            sku = product.sku
-            name = product.friendly_name
+    
             
 
     emptyingBasket(request)
