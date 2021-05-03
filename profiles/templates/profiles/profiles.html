@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container margin-header-wrapper main-section-container">
+    <div class="row">
+        <div class="col-12 extra-margin-top text-center">
+            <hr>
+            <h2 class="logo-font ">My Profile</h2>
+            <hr>
+             {% if messages %}
+                <div class="message-container">
+                    {% for message in messages %}
+                        <p class="mb-0"><i class="far fa-check-circle"></i> {{message}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    
+    <div class="row mb-3">
+        <div class="accordion col-12 col-xl-10 offset-xl-1" id="accordionExample">
+            <div class="card col-12 p-0">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-no-effects accordion-header collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Delivery Information
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <hr class="mt-0">
+                        <h4 class="text-center">Delivery Information</h4>
+                        <hr>
+                        <div class="mt-4"> 
+                        <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                            {% csrf_token %}
+                            <div class="text-center">
+                            {{ form|crispy }}
+                            
+                            <button class="btn action-btn btn-lg rounded-0">Update Information <i class="fas fa-chevron-right"></i> </button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="card col-12 p-0">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-no-effects accordion-header collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Order History
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        {% include 'profiles/includes/user_order_history.html' %}  
+                         <hr> 
+                         <p class="text-center mb-0">Please contact us if there are any issues with your order.</p>       
+                    </div>
+                </div>
+            </div>              
+           
+        </div>
+    </div>
+</div>
+
+{% include 'includes/footer.html' %}
+{% endblock %}
