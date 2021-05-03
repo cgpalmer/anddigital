@@ -23,7 +23,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
                             {% if request.user.is_authenticated %}
-            
+                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
 
                             {% else %}
@@ -62,13 +62,13 @@
 
                 <li class="nav-item dropdown">
                     <a class=" nav-link cat-links" href="#" id="specialOffersDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       Men's <i class="fas fa-chevron-down"></i>
+                       Men <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="dropdown-menu border-0 pl-3" aria-labelledby="specialOffersDropdown">
-                    <a href="?category=shoes" class="cat-links">Shoes</a>
-                    <a href="?category=trainers" class="cat-links">Trainers</a>
-                    <a href="?category=sports" class="cat-links">Sports</a>
-                    <a href="?category=boots" class="cat-links">Boots</a>
+                    <a href="" class="cat-links">Shoes</a>
+                    <a href="" class="cat-links">Trainers</a>
+                    <a href="" class="cat-links">Sports</a>
+                    <a href="" class="cat-links">Boots</a>
                     </div>
                 </li>
 
@@ -76,13 +76,13 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link cat-links" href="#" id="photographsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Women's <i class="fas fa-chevron-down"></i>
+                        Women <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="dropdown-menu border-0 pl-3" aria-labelledby="photographsDropdown">
-                        <a href="?category=shoes" class="cat-links">Shoes</a>
-                    <a href="?category=trainers" class="cat-links">Trainers</a>
-                    <a href="?category=sports" class="cat-links">Sports</a>
-                    <a href="?category=boots" class="cat-links">Boots</a>>  
+                        <a href="" class="cat-links">Shoes</a>
+                    <a href="" class="cat-links">Trainers</a>
+                    <a href="" class="cat-links">Sports</a>
+                    <a href="" class="cat-links">Boots</a>>  
                     </div>
                 </li>
 
@@ -91,10 +91,10 @@
                        Kids <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="dropdown-menu border-0 pl-3" aria-labelledby="containersDropdown">
-                     <a href="?category=shoes" class="cat-links">0-1 Year</a>
-                    <a href="?category=trainers" class="cat-links">1-4 Years</a>
-                    <a href="?category=sports" class="cat-links">4-8 Years</a>
-                    <a href="?category=boots" class="cat-links">8-16 Years</a>
+                     <a href="" class="cat-links">0-1 Year</a>
+                    <a href="" class="cat-links">1-4 Years</a>
+                    <a href="" class="cat-links">4-8 Years</a>
+                    <a href="" class="cat-links">8-16 Years</a>
                     </div>
                 </li>
 

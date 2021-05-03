@@ -1,11 +1,11 @@
 /* Background Colours */
 .navbar, footer, .main-colour,.second-btn, .second-btn, 
 .second-btn:hover, .second-btn:active, .second-btn:focus, 
-.btn-danger:hover, .btn-danger:active, .btn-danger:focus, .special-offer-badge {
+.btn-danger:hover, .btn-danger:active, .btn-danger:focus, .special-offer-badge, .accordion>.card>.card-header {
     background-color: #212D97;
 }
 
-.action-btn,.accordion>.card>.card-header {
+.action-btn {
     background-color: #f7ea5f;
 }
 
@@ -124,12 +124,14 @@ p, .product-name, h4, h4 a, .form-control:focus, .email, .order-number  {
 }
 
 .btn-no-effects, .btn-no-effects:hover, .btn-no-effects:active, .btn-no-effects:focus{
-    background-color: #212D97 ;
-    color: white;
+    background-color: transparent;
+    color:  #f7ea5f;
     border: none;
     box-shadow: none;    
 }
-
+.btn-no-effects>h4{
+    color: #f7ea5f;
+}
 @keyframes basket-glow{
     0%{
         color: white;
