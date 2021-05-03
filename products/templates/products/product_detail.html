@@ -112,13 +112,14 @@
                         {% endfor %}
                     </select>
                     <hr>
+                    <h5>Sizes available</h5>
                     {% for size in sizes %}
-                        <p class="{{size.store}} available_sizes hide card-text">Size {{size.size}}: {{size.stock_levels}}</p>
+                        <p class="{{size.store}} available_sizes hide card-text">Size {{size.size}}:  {{size.stock_levels}} available</p>
                     {% endfor %}
                     <hr>
                     <div>
                         <h5 class="btn second-btn">Size guide <i class="fas fa-chevron-down"></i></h5>
-                        <img src="" alt="">
+                        <img src="{static 'images/size_guide.jpg'}" alt="">
                     </div> 
                    
                 </div>
