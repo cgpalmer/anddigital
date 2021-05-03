@@ -1,15 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
-<div style="height: 20vh"></div>
- 
-   <h1>Home page</h1>
-<a href="{% url 'add_product' %}">Add a product</a>
-<a href="{% url 'add_product_stock' %}">Add a product stock</a>
-
-<a href="{% url 'products' %}">Start shopping</a>
-
+    <div class="col-12 extra-margin-top hide">
+        {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                    <p class="mb-0"><i class="far fa-check-circle"></i> {{message}}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <main>
+        <div class="jumbotron jumbotron-fluid home-image margin-header-wrapper">
+            <div class="container-fluid product-desc-jumbo jumbotronImageTextWrapper jumbotronImageTextWrapper-lg">
+                <h5>The all-new Nike Pegasus 38 has landed.</h5>
+                <h5>Hit the ground running.</h5>
+               
+            </div>
+            <div class="container-fluid shop-now-margin jumbotronImageTextWrapper jumbotronImageTextWrapper-lg">
+              
+                <a class="btn second-btn rounded-0 btn-lg my-2 shop-now-button" href="{% url 'products' %}" role="button">Shop now</a>
+            </div>
+        </div>
+    </main> 
 
 {% endblock %}
