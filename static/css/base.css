@@ -52,7 +52,9 @@ a:hover {
     width: 100%;
 }
 
-
+.cat-links{
+    display: block;
+}
 
 .social_login{
     margin-bottom: 1rem;
