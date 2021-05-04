@@ -56,6 +56,10 @@ a:hover {
     display: block;
 }
 
+.size_guide{
+    width: 100%;
+}
+
 .social_login{
     margin-bottom: 1rem;
     text-align: center;

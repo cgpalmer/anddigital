@@ -233,3 +233,10 @@ $('#dd_header').click(function(e){
 $('#rp-header').click(function(e){
     $('.rp_advise_wrapper').toggleClass('hide');
 });
+
+size_guide_button
+
+
+$('#size_guide_button').click(function(e){
+    $('#size_guide').toggleClass('hide');
+});

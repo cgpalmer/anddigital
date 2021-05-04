@@ -118,8 +118,10 @@
                     {% endfor %}
                     <hr>
                     <div>
-                        <h5 class="btn second-btn">Size guide <i class="fas fa-chevron-down"></i></h5>
-                        <img src="{static 'images/size_guide.jpg'}" alt="">
+                        <h5 id="size_guide_button" class="btn second-btn">Size guide <i class="fas fa-chevron-down"></i></h5>
+                       <a href="/static/images/size_guide.jpg">
+                        <img id="size_guide" class="size_guide hide" src="/static/images/size_guide.jpg" alt="">
+                        </a>
                     </div> 
                    
                 </div>
